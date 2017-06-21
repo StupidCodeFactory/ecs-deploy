@@ -27,8 +27,6 @@ if [ $? -ne 0 ]; then
     error "Unable to install bundler"
     warn "$INSTALL_BUNDLER"
     exit 1
-else
-    
 fi
 
 echo "Runnig bundle install"
