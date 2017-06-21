@@ -31,7 +31,7 @@ fi
 
 echo "Runnig bundle install"
 INSTALL_DEPENDENCIES=$(bundle install 2>&1)
-fi [ $? -ne 0 ]; then
+if [ $? -ne 0 ]; then
     error "Unable to install dependencies"
     warn "$INSTALL_DEPENDENCIES"
     exit 1
