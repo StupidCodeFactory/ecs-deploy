@@ -1,0 +1,14 @@
+name: ecs-deploy
+version: 0.1
+description: Deploy a project to AWS ECS
+keywords:
+  - aws
+  - ecs
+  - deploy
+  - ecr
+  - docker
+properties:
+  cluster_name:
+    required: true
+    type: string
+    default: default
