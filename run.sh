@@ -20,7 +20,7 @@ type_exists() {
 if ! type_exists 'ruby'; then
     error "Please install ruby or use a docker ruby image"
 fi
-echo "Installing bundler"
+
 INSTALL_BUNDLER=$(gem install bundler --no-doc 2>&1)
 if [ $? -ne 0 ]; then
     error "Unable to install bundler"
@@ -28,7 +28,6 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-echo "Runnig bundle install"
 INSTALL_DEPENDENCIES=$(bundle install --gemfile=$WERCKER_STEP_ROOT/Gemfile 2>&1)
 if [ $? -ne 0 ]; then
     error "Unable to install dependencies"
