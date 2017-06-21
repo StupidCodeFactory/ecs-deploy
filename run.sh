@@ -1,7 +1,6 @@
 #!/bin/sh
 
 set +e
-set -x
 
 error() {
     printf "✖ %s\n" "$@"
