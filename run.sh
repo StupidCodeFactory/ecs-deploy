@@ -1,38 +1,38 @@
 #!/bin/sh
 
 set -e
-echo "STUFFFFFFFFF"
-# error() {
-#     printf "✖ %s\n" "$@"
-# }
 
-# warn() {
-#     printf "➜ %s\n" "$@"
-# }
+error() {
+    printf "✖ %s\n" "$@"
+}
 
-# type_exists() {
-#     if [ $(type -P $1) ]; then
-#         return 0
-#     fi
-#     return 1
-# }
+warn() {
+    printf "➜ %s\n" "$@"
+}
 
-# if ! type_exists 'ruby'; then
-#     error "Please install ruby or use a docker ruby image"
-# fi
+type_exists() {
+    if [ $(type -P $1) ]; then
+        return 0
+    fi
+    return 1
+}
 
-# INSTALL_BUNDLER=$(gem install bundler --no-doc 2>&1)
-# if [ $? -ne 0 ]; then
-#   error "Unable to install bundler"
-#   warn "$INSTALL_BUNDLER"
-#   exit 1
-# fi
+if ! type_exists 'ruby'; then
+    error "Please install ruby or use a docker ruby image"
+fi
 
-# INSTALL_DEPENDENCIES=$(bundle install 2>&1)
-# fi [ $? -ne 0 ]; then
-#   error "Unable to install dependencies"
-#   warn "$INSTALL_DEPENDENCIES"
-#   exit 1
-# fi
+INSTALL_BUNDLER=$(gem install bundler --no-doc 2>&1)
+if [ $? -ne 0 ]; then
+  error "Unable to install bundler"
+  warn "$INSTALL_BUNDLER"
+  exit 1
+fi
+
+INSTALL_DEPENDENCIES=$(bundle install 2>&1)
+fi [ $? -ne 0 ]; then
+  error "Unable to install dependencies"
+  warn "$INSTALL_DEPENDENCIES"
+  exit 1
+fi
 
 ruby $WERCKER_STEP_ROOT/main.rb
