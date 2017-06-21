@@ -36,7 +36,7 @@ if [ $? -ne 0 ]; then
     warn "$INSTALL_DEPENDENCIES"
     exit 1
 else
-    bundle install
+    bundle install --gemfile=$WERCKER_STEP_ROOT/Gemfile
 fi
 
 ruby $WERCKER_STEP_ROOT/main.rb
