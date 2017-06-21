@@ -29,14 +29,11 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Runnig bundle install"
-INSTALL_DEPENDENCIES=$(bundle install 2>&1)
+INSTALL_DEPENDENCIES=$(bundle install --gemfile=$WERCKER_STEP_ROOT/Gemfile 2>&1)
 if [ $? -ne 0 ]; then
     error "Unable to install dependencies"
     warn "$INSTALL_DEPENDENCIES"
     exit 1
-else
-    ls -ls $WERCKER_STEP_ROOT
-    bundle install --gemfile=$WERCKER_STEP_ROOT/Gemfile
 fi
 
 ruby $WERCKER_STEP_ROOT/main.rb
