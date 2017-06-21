@@ -35,6 +35,7 @@ if [ $? -ne 0 ]; then
     warn "$INSTALL_DEPENDENCIES"
     exit 1
 else
+    ls -ls $WERCKER_STEP_ROOT
     bundle install --gemfile=$WERCKER_STEP_ROOT/Gemfile
 fi
 
