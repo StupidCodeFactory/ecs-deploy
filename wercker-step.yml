@@ -11,4 +11,4 @@ properties:
   cluster_name:
     required: true
     type: string
-    default: default
+
