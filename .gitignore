@@ -1,1 +1,3 @@
 .wercker/
+.rspec
+.byebug_history
