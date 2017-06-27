@@ -1,7 +1,12 @@
+#!/usr/bin/env ruby
+
+$:.unshift(File.join(File.expand_path(File.dirname(__FILE__)), 'lib'))
+
 require 'bundler/setup'
 require 'aws-sdk'
 require 'pp'
 require 'optparse'
+require 'args_parser'
 
 class ECSDeploy
 
@@ -44,7 +49,7 @@ end
 
 
 if __FILE__ == $0
-
-  pp ENV.inspect
-  
+  s = ArgsParser.new.parse(ARGV)
+  ecs = ECSDeploy.new(s.cluster_name)
+  ecs.cluster
 end

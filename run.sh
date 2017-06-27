@@ -35,4 +35,14 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-ruby $WERCKER_STEP_ROOT/main.rb
+if [ -z "${WERCKER_ECS_DEPLOY_CLUSTER_NAME}" ]; then
+    error "Please set the 'cluster_name' key under the stupidcodefactory/ecs-deploy step definition."
+    exit 1
+fi
+
+if [ -z "${WERCKER_ECS_DEPLOY_SERVICE_NAME}" ]; then
+    error "Please set the 'service_name' key under the stupidcodefactory/ecs-deploy step definition."
+    exit 1
+fi
+
+ruby $WERCKER_STEP_ROOT/main.rb --cluster-name $WERCKER_ECS_DEPLOY_CLUSTER_NAME --service-name $WERCKER_ECS_DEPLOY_SERVICE_NAME
