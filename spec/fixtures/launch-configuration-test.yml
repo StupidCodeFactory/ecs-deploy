@@ -1,0 +1,6 @@
+---
+launch_configuration_name: ec-deploy-test
+instance_type: 't2.micro'
+image_id: "ami-809f84e6"
+security_groups:
+  - sg-1364a06b

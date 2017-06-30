@@ -1,0 +1,7 @@
+---
+auto_scaling_group_name: 'ecs-deploy-test'
+min_size: 1
+max_size: 1
+desired_capacity: 1
+launch_configuration_name: ec-deploy-test
+vpc_zone_identifier: subnet-8216b0e5
