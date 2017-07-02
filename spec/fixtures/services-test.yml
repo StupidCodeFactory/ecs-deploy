@@ -1,4 +1,4 @@
 ---
-service_name: uprising-software-com-service
-task_definition: uprising-software-com
-desired_count: 1
+- service_name: uprising-software-com-service
+  task_definition: uprising-software-com
+  desired_count: 1

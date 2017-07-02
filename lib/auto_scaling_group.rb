@@ -3,18 +3,18 @@ require 'launch_configuration'
 class AutoScalingGroup
   def initialize(client, config)
     self.client = client
-    self.config = config
+    self.config = config.with_indifferent_access
   end
 
   def instances
     return [] unless exists?
      @instances ||= client.describe_auto_scaling_instances[:auto_scaling_instances]
   end
-  
+
   def exists?
     !!autoscaling_group
   end
-  
+
   def create
     @auto_scaling_group ||= autoscaling_group || create_auto_scaling_group
   end
@@ -47,7 +47,7 @@ class AutoScalingGroup
     begin
       client.create_auto_scaling_group(config)
       client.wait_until :group_in_service do |w|
-        
+
         w.before_attempt do |attempts|
           STDOUT.puts "#{attempts}: Waiting for autoscaling group to be in service..."
         end

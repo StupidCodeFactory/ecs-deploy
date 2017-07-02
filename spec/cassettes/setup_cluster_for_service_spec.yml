@@ -1,0 +1,703 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ecs.eu-west-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: '{"clusterName":"cluster_for_service_spec"}'
+    headers:
+      Content-Type:
+      - application/x-amz-json-1.1
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.1 ruby/2.4.1 x86_64-darwin16
+      X-Amz-Target:
+      - AmazonEC2ContainerServiceV20141113.CreateCluster
+      X-Amz-Date:
+      - 20170702T142914Z
+      Host:
+      - ecs.eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - 7b0fc90980885dae00842fc2e1c523267d7cc584e2a0f50f4bad1084d246a663
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIITSQKF65OBAYC7A/20170702/eu-west-1/ecs/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
+        Signature=51c8d17f9b79ff215bf63761f146156c0a6d2abc65a034373ac24702aad4b6ee
+      Content-Length:
+      - '42'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Server
+      Date:
+      - Sun, 02 Jul 2017 14:29:14 GMT
+      Content-Type:
+      - application/x-amz-json-1.1
+      Content-Length:
+      - '261'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - d2cdde82-5f32-11e7-805c-a7c44e980e6e
+    body:
+      encoding: UTF-8
+      string: '{"cluster":{"activeServicesCount":0,"clusterArn":"arn:aws:ecs:eu-west-1:466565482925:cluster/cluster_for_service_spec","clusterName":"cluster_for_service_spec","pendingTasksCount":0,"registeredContainerInstancesCount":0,"runningTasksCount":0,"status":"ACTIVE"}}'
+    http_version: 
+  recorded_at: Sun, 02 Jul 2017 14:29:14 GMT
+- request:
+    method: post
+    uri: https://autoscaling.eu-west-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: Action=DescribeLaunchConfigurations&LaunchConfigurationNames.member.1=ec-deploy-test&Version=2011-01-01
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.1 ruby/2.4.1 x86_64-darwin16
+      X-Amz-Date:
+      - 20170702T142914Z
+      Host:
+      - autoscaling.eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - 02e5d21313066d2ed666ee1b24de6b9ec3b5e7138fd10fb3c5c4d01e32b74465
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIITSQKF65OBAYC7A/20170702/eu-west-1/autoscaling/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=0328ee5b86652de77baf5c4650a56608927a7d827cb6336c662b35b595b90b9e
+      Content-Length:
+      - '103'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - d2ef21c3-5f32-11e7-8a6b-a7cef2dc06b4
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '350'
+      Date:
+      - Sun, 02 Jul 2017 14:29:14 GMT
+    body:
+      encoding: UTF-8
+      string: |
+        <DescribeLaunchConfigurationsResponse xmlns="http://autoscaling.amazonaws.com/doc/2011-01-01/">
+          <DescribeLaunchConfigurationsResult>
+            <LaunchConfigurations/>
+          </DescribeLaunchConfigurationsResult>
+          <ResponseMetadata>
+            <RequestId>d2ef21c3-5f32-11e7-8a6b-a7cef2dc06b4</RequestId>
+          </ResponseMetadata>
+        </DescribeLaunchConfigurationsResponse>
+    http_version: 
+  recorded_at: Sun, 02 Jul 2017 14:29:15 GMT
+- request:
+    method: post
+    uri: https://autoscaling.eu-west-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: Action=DescribeLaunchConfigurations&LaunchConfigurationNames.member.1=ec-deploy-test&Version=2011-01-01
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.1 ruby/2.4.1 x86_64-darwin16
+      X-Amz-Date:
+      - 20170702T142915Z
+      Host:
+      - autoscaling.eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - 02e5d21313066d2ed666ee1b24de6b9ec3b5e7138fd10fb3c5c4d01e32b74465
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIITSQKF65OBAYC7A/20170702/eu-west-1/autoscaling/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=6fc3b4032b55be6e55a36a32df51e9cb35952d39dd4e91ea93fe00b8cc55ab24
+      Content-Length:
+      - '103'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - d30960ce-5f32-11e7-8283-cf73a2d44c75
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '350'
+      Date:
+      - Sun, 02 Jul 2017 14:29:15 GMT
+    body:
+      encoding: UTF-8
+      string: |
+        <DescribeLaunchConfigurationsResponse xmlns="http://autoscaling.amazonaws.com/doc/2011-01-01/">
+          <DescribeLaunchConfigurationsResult>
+            <LaunchConfigurations/>
+          </DescribeLaunchConfigurationsResult>
+          <ResponseMetadata>
+            <RequestId>d30960ce-5f32-11e7-8283-cf73a2d44c75</RequestId>
+          </ResponseMetadata>
+        </DescribeLaunchConfigurationsResponse>
+    http_version: 
+  recorded_at: Sun, 02 Jul 2017 14:29:15 GMT
+- request:
+    method: post
+    uri: https://autoscaling.eu-west-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: Action=CreateLaunchConfiguration&IamInstanceProfile=ecsInstanceRole&ImageId=ami-809f84e6&InstanceType=t2.micro&KeyName=uprising-software-com&LaunchConfigurationName=ec-deploy-test&SecurityGroups.member.1=sg-1364a06b&UserData=IyEvYmluL2Jhc2gKZWNobyBFQ1NfQ0xVU1RFUj1lY3MtZGVwbG95LXdlcmNr%0AZXItc3RlcCA%2BPiAvZXRjL2Vjcy9lY3MuY29uZmlnCg%3D%3D%0A&Version=2011-01-01
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.1 ruby/2.4.1 x86_64-darwin16
+      X-Amz-Date:
+      - 20170702T142915Z
+      Host:
+      - autoscaling.eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - 208d619f6f150e6377a00b94938218ff02440c1cab3b643a0916eee462b88319
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIITSQKF65OBAYC7A/20170702/eu-west-1/autoscaling/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=0278246dff570f89fc6a249b3dc708855d19c0dd2d04a1b3c28b5989ab2c6863
+      Content-Length:
+      - '360'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - d3241410-5f32-11e7-9b34-25332fac7803
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '237'
+      Date:
+      - Sun, 02 Jul 2017 14:29:14 GMT
+    body:
+      encoding: UTF-8
+      string: |
+        <CreateLaunchConfigurationResponse xmlns="http://autoscaling.amazonaws.com/doc/2011-01-01/">
+          <ResponseMetadata>
+            <RequestId>d3241410-5f32-11e7-9b34-25332fac7803</RequestId>
+          </ResponseMetadata>
+        </CreateLaunchConfigurationResponse>
+    http_version: 
+  recorded_at: Sun, 02 Jul 2017 14:29:15 GMT
+- request:
+    method: post
+    uri: https://autoscaling.eu-west-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: Action=DescribeAutoScalingGroups&AutoScalingGroupNames.member.1=ecs-deploy-test&Version=2011-01-01
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.1 ruby/2.4.1 x86_64-darwin16
+      X-Amz-Date:
+      - 20170702T142915Z
+      Host:
+      - autoscaling.eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - 0bddd4798a5645749d61ecb178c3cb2daad4af49cb0653770d4f2282394ed07a
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIITSQKF65OBAYC7A/20170702/eu-west-1/autoscaling/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=ae616a4110e2906b6b7bd3c7a934cf120921ef10d761e5f9037d23503b81f770
+      Content-Length:
+      - '98'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - d35d2594-5f32-11e7-ae2f-c5d2f8af9267
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '335'
+      Date:
+      - Sun, 02 Jul 2017 14:29:15 GMT
+    body:
+      encoding: UTF-8
+      string: |
+        <DescribeAutoScalingGroupsResponse xmlns="http://autoscaling.amazonaws.com/doc/2011-01-01/">
+          <DescribeAutoScalingGroupsResult>
+            <AutoScalingGroups/>
+          </DescribeAutoScalingGroupsResult>
+          <ResponseMetadata>
+            <RequestId>d35d2594-5f32-11e7-ae2f-c5d2f8af9267</RequestId>
+          </ResponseMetadata>
+        </DescribeAutoScalingGroupsResponse>
+    http_version: 
+  recorded_at: Sun, 02 Jul 2017 14:29:15 GMT
+- request:
+    method: post
+    uri: https://autoscaling.eu-west-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: Action=DescribeAutoScalingGroups&AutoScalingGroupNames.member.1=ecs-deploy-test&Version=2011-01-01
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.1 ruby/2.4.1 x86_64-darwin16
+      X-Amz-Date:
+      - 20170702T142915Z
+      Host:
+      - autoscaling.eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - 0bddd4798a5645749d61ecb178c3cb2daad4af49cb0653770d4f2282394ed07a
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIITSQKF65OBAYC7A/20170702/eu-west-1/autoscaling/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=ae616a4110e2906b6b7bd3c7a934cf120921ef10d761e5f9037d23503b81f770
+      Content-Length:
+      - '98'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - d3736d10-5f32-11e7-858f-c5695e107912
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '335'
+      Date:
+      - Sun, 02 Jul 2017 14:29:15 GMT
+    body:
+      encoding: UTF-8
+      string: |
+        <DescribeAutoScalingGroupsResponse xmlns="http://autoscaling.amazonaws.com/doc/2011-01-01/">
+          <DescribeAutoScalingGroupsResult>
+            <AutoScalingGroups/>
+          </DescribeAutoScalingGroupsResult>
+          <ResponseMetadata>
+            <RequestId>d3736d10-5f32-11e7-858f-c5695e107912</RequestId>
+          </ResponseMetadata>
+        </DescribeAutoScalingGroupsResponse>
+    http_version: 
+  recorded_at: Sun, 02 Jul 2017 14:29:15 GMT
+- request:
+    method: post
+    uri: https://autoscaling.eu-west-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: Action=CreateAutoScalingGroup&AutoScalingGroupName=ecs-deploy-test&AvailabilityZones.member.1=eu-west-1a&DesiredCapacity=1&LaunchConfigurationName=ec-deploy-test&MaxSize=1&MinSize=1&VPCZoneIdentifier=subnet-8216b0e5&Version=2011-01-01
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.1 ruby/2.4.1 x86_64-darwin16
+      X-Amz-Date:
+      - 20170702T142915Z
+      Host:
+      - autoscaling.eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - bb62c1afdc17bc05830f34ba7880e9b253219487f3cc120708d3c37e0cda847b
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIITSQKF65OBAYC7A/20170702/eu-west-1/autoscaling/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=6f98e25f0a95029c83209a3d569b1c8cf8a24a845765ecc3c32b7ef82014a609
+      Content-Length:
+      - '234'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - d38e4799-5f32-11e7-92df-ff187ae7992e
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '231'
+      Date:
+      - Sun, 02 Jul 2017 14:29:15 GMT
+    body:
+      encoding: UTF-8
+      string: |
+        <CreateAutoScalingGroupResponse xmlns="http://autoscaling.amazonaws.com/doc/2011-01-01/">
+          <ResponseMetadata>
+            <RequestId>d38e4799-5f32-11e7-92df-ff187ae7992e</RequestId>
+          </ResponseMetadata>
+        </CreateAutoScalingGroupResponse>
+    http_version: 
+  recorded_at: Sun, 02 Jul 2017 14:29:16 GMT
+- request:
+    method: post
+    uri: https://autoscaling.eu-west-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: Action=DescribeAutoScalingGroups&Version=2011-01-01
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.1 ruby/2.4.1 x86_64-darwin16
+      X-Amz-Date:
+      - 20170702T142916Z
+      Host:
+      - autoscaling.eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - 64a4e32042052efcfb14e823e9f009f88d125e04f2dbe5c7b557bf0f91d7d463
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIITSQKF65OBAYC7A/20170702/eu-west-1/autoscaling/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=084c1079b5548897d1f43ecd61eb5e02f81fa6d8a137f6e4e76306fa666c08e6
+      Content-Length:
+      - '51'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - d3e98765-5f32-11e7-8a6b-a7cef2dc06b4
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '1520'
+      Date:
+      - Sun, 02 Jul 2017 14:29:15 GMT
+    body:
+      encoding: UTF-8
+      string: |
+        <DescribeAutoScalingGroupsResponse xmlns="http://autoscaling.amazonaws.com/doc/2011-01-01/">
+          <DescribeAutoScalingGroupsResult>
+            <AutoScalingGroups>
+              <member>
+                <HealthCheckType>EC2</HealthCheckType>
+                <LoadBalancerNames/>
+                <Instances/>
+                <TerminationPolicies>
+                  <member>Default</member>
+                </TerminationPolicies>
+                <DefaultCooldown>300</DefaultCooldown>
+                <AutoScalingGroupARN>arn:aws:autoscaling:eu-west-1:466565482925:autoScalingGroup:0e29f09f-c7b5-4c8e-b207-7d34edfbe0ab:autoScalingGroupName/ecs-deploy-test</AutoScalingGroupARN>
+                <EnabledMetrics/>
+                <AvailabilityZones>
+                  <member>eu-west-1a</member>
+                </AvailabilityZones>
+                <MaxSize>1</MaxSize>
+                <TargetGroupARNs/>
+                <Tags/>
+                <LaunchConfigurationName>ec-deploy-test</LaunchConfigurationName>
+                <AutoScalingGroupName>ecs-deploy-test</AutoScalingGroupName>
+                <HealthCheckGracePeriod>0</HealthCheckGracePeriod>
+                <NewInstancesProtectedFromScaleIn>false</NewInstancesProtectedFromScaleIn>
+                <CreatedTime>2017-07-02T14:29:16.445Z</CreatedTime>
+                <MinSize>1</MinSize>
+                <SuspendedProcesses/>
+                <DesiredCapacity>1</DesiredCapacity>
+                <VPCZoneIdentifier>subnet-8216b0e5</VPCZoneIdentifier>
+              </member>
+            </AutoScalingGroups>
+          </DescribeAutoScalingGroupsResult>
+          <ResponseMetadata>
+            <RequestId>d3e98765-5f32-11e7-8a6b-a7cef2dc06b4</RequestId>
+          </ResponseMetadata>
+        </DescribeAutoScalingGroupsResponse>
+    http_version: 
+  recorded_at: Sun, 02 Jul 2017 14:29:16 GMT
+- request:
+    method: post
+    uri: https://autoscaling.eu-west-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: Action=DescribeAutoScalingGroups&Version=2011-01-01
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.1 ruby/2.4.1 x86_64-darwin16
+      X-Amz-Date:
+      - 20170702T142931Z
+      Host:
+      - autoscaling.eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - 64a4e32042052efcfb14e823e9f009f88d125e04f2dbe5c7b557bf0f91d7d463
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIITSQKF65OBAYC7A/20170702/eu-west-1/autoscaling/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=67773e5b388e3fe2a9516404cff4a36360627a5a0f2ca45967e010b1b98b8d32
+      Content-Length:
+      - '51'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - dcf163b8-5f32-11e7-8bd5-a592055acbdd
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '1939'
+      Date:
+      - Sun, 02 Jul 2017 14:29:31 GMT
+    body:
+      encoding: UTF-8
+      string: |
+        <DescribeAutoScalingGroupsResponse xmlns="http://autoscaling.amazonaws.com/doc/2011-01-01/">
+          <DescribeAutoScalingGroupsResult>
+            <AutoScalingGroups>
+              <member>
+                <HealthCheckType>EC2</HealthCheckType>
+                <LoadBalancerNames/>
+                <Instances>
+                  <member>
+                    <LaunchConfigurationName>ec-deploy-test</LaunchConfigurationName>
+                    <LifecycleState>Pending</LifecycleState>
+                    <InstanceId>i-004b7fc3cc4348a44</InstanceId>
+                    <HealthStatus>Healthy</HealthStatus>
+                    <ProtectedFromScaleIn>false</ProtectedFromScaleIn>
+                    <AvailabilityZone>eu-west-1a</AvailabilityZone>
+                  </member>
+                </Instances>
+                <TerminationPolicies>
+                  <member>Default</member>
+                </TerminationPolicies>
+                <DefaultCooldown>300</DefaultCooldown>
+                <EnabledMetrics/>
+                <AutoScalingGroupARN>arn:aws:autoscaling:eu-west-1:466565482925:autoScalingGroup:0e29f09f-c7b5-4c8e-b207-7d34edfbe0ab:autoScalingGroupName/ecs-deploy-test</AutoScalingGroupARN>
+                <MaxSize>1</MaxSize>
+                <AvailabilityZones>
+                  <member>eu-west-1a</member>
+                </AvailabilityZones>
+                <TargetGroupARNs/>
+                <Tags/>
+                <LaunchConfigurationName>ec-deploy-test</LaunchConfigurationName>
+                <AutoScalingGroupName>ecs-deploy-test</AutoScalingGroupName>
+                <HealthCheckGracePeriod>0</HealthCheckGracePeriod>
+                <NewInstancesProtectedFromScaleIn>false</NewInstancesProtectedFromScaleIn>
+                <CreatedTime>2017-07-02T14:29:16.445Z</CreatedTime>
+                <MinSize>1</MinSize>
+                <SuspendedProcesses/>
+                <DesiredCapacity>1</DesiredCapacity>
+                <VPCZoneIdentifier>subnet-8216b0e5</VPCZoneIdentifier>
+              </member>
+            </AutoScalingGroups>
+          </DescribeAutoScalingGroupsResult>
+          <ResponseMetadata>
+            <RequestId>dcf163b8-5f32-11e7-8bd5-a592055acbdd</RequestId>
+          </ResponseMetadata>
+        </DescribeAutoScalingGroupsResponse>
+    http_version: 
+  recorded_at: Sun, 02 Jul 2017 14:29:31 GMT
+- request:
+    method: post
+    uri: https://autoscaling.eu-west-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: Action=DescribeAutoScalingGroups&Version=2011-01-01
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.1 ruby/2.4.1 x86_64-darwin16
+      X-Amz-Date:
+      - 20170702T142946Z
+      Host:
+      - autoscaling.eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - 64a4e32042052efcfb14e823e9f009f88d125e04f2dbe5c7b557bf0f91d7d463
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIITSQKF65OBAYC7A/20170702/eu-west-1/autoscaling/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=4b4727337cf83b92d44567a2dce907e39465e200030de6bb0ac988424ca2f807
+      Content-Length:
+      - '51'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - e5febd7d-5f32-11e7-aff0-a7a4901bc9c8
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '1939'
+      Date:
+      - Sun, 02 Jul 2017 14:29:46 GMT
+    body:
+      encoding: UTF-8
+      string: |
+        <DescribeAutoScalingGroupsResponse xmlns="http://autoscaling.amazonaws.com/doc/2011-01-01/">
+          <DescribeAutoScalingGroupsResult>
+            <AutoScalingGroups>
+              <member>
+                <HealthCheckType>EC2</HealthCheckType>
+                <LoadBalancerNames/>
+                <Instances>
+                  <member>
+                    <LaunchConfigurationName>ec-deploy-test</LaunchConfigurationName>
+                    <LifecycleState>Pending</LifecycleState>
+                    <InstanceId>i-004b7fc3cc4348a44</InstanceId>
+                    <HealthStatus>Healthy</HealthStatus>
+                    <ProtectedFromScaleIn>false</ProtectedFromScaleIn>
+                    <AvailabilityZone>eu-west-1a</AvailabilityZone>
+                  </member>
+                </Instances>
+                <TerminationPolicies>
+                  <member>Default</member>
+                </TerminationPolicies>
+                <DefaultCooldown>300</DefaultCooldown>
+                <AutoScalingGroupARN>arn:aws:autoscaling:eu-west-1:466565482925:autoScalingGroup:0e29f09f-c7b5-4c8e-b207-7d34edfbe0ab:autoScalingGroupName/ecs-deploy-test</AutoScalingGroupARN>
+                <EnabledMetrics/>
+                <MaxSize>1</MaxSize>
+                <AvailabilityZones>
+                  <member>eu-west-1a</member>
+                </AvailabilityZones>
+                <TargetGroupARNs/>
+                <Tags/>
+                <LaunchConfigurationName>ec-deploy-test</LaunchConfigurationName>
+                <AutoScalingGroupName>ecs-deploy-test</AutoScalingGroupName>
+                <HealthCheckGracePeriod>0</HealthCheckGracePeriod>
+                <NewInstancesProtectedFromScaleIn>false</NewInstancesProtectedFromScaleIn>
+                <CreatedTime>2017-07-02T14:29:16.445Z</CreatedTime>
+                <MinSize>1</MinSize>
+                <SuspendedProcesses/>
+                <DesiredCapacity>1</DesiredCapacity>
+                <VPCZoneIdentifier>subnet-8216b0e5</VPCZoneIdentifier>
+              </member>
+            </AutoScalingGroups>
+          </DescribeAutoScalingGroupsResult>
+          <ResponseMetadata>
+            <RequestId>e5febd7d-5f32-11e7-aff0-a7a4901bc9c8</RequestId>
+          </ResponseMetadata>
+        </DescribeAutoScalingGroupsResponse>
+    http_version: 
+  recorded_at: Sun, 02 Jul 2017 14:29:47 GMT
+- request:
+    method: post
+    uri: https://autoscaling.eu-west-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: Action=DescribeAutoScalingGroups&Version=2011-01-01
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.1 ruby/2.4.1 x86_64-darwin16
+      X-Amz-Date:
+      - 20170702T143002Z
+      Host:
+      - autoscaling.eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - 64a4e32042052efcfb14e823e9f009f88d125e04f2dbe5c7b557bf0f91d7d463
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIITSQKF65OBAYC7A/20170702/eu-west-1/autoscaling/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=af80c5867903ecf726b8a677646a4d00c62e95e65f0ae8685e986d0d7265e46f
+      Content-Length:
+      - '51'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - ef10d29a-5f32-11e7-9230-394348f413be
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '1941'
+      Date:
+      - Sun, 02 Jul 2017 14:30:01 GMT
+    body:
+      encoding: UTF-8
+      string: |
+        <DescribeAutoScalingGroupsResponse xmlns="http://autoscaling.amazonaws.com/doc/2011-01-01/">
+          <DescribeAutoScalingGroupsResult>
+            <AutoScalingGroups>
+              <member>
+                <HealthCheckType>EC2</HealthCheckType>
+                <LoadBalancerNames/>
+                <Instances>
+                  <member>
+                    <LaunchConfigurationName>ec-deploy-test</LaunchConfigurationName>
+                    <LifecycleState>InService</LifecycleState>
+                    <InstanceId>i-004b7fc3cc4348a44</InstanceId>
+                    <HealthStatus>Healthy</HealthStatus>
+                    <ProtectedFromScaleIn>false</ProtectedFromScaleIn>
+                    <AvailabilityZone>eu-west-1a</AvailabilityZone>
+                  </member>
+                </Instances>
+                <TerminationPolicies>
+                  <member>Default</member>
+                </TerminationPolicies>
+                <DefaultCooldown>300</DefaultCooldown>
+                <EnabledMetrics/>
+                <AutoScalingGroupARN>arn:aws:autoscaling:eu-west-1:466565482925:autoScalingGroup:0e29f09f-c7b5-4c8e-b207-7d34edfbe0ab:autoScalingGroupName/ecs-deploy-test</AutoScalingGroupARN>
+                <AvailabilityZones>
+                  <member>eu-west-1a</member>
+                </AvailabilityZones>
+                <MaxSize>1</MaxSize>
+                <TargetGroupARNs/>
+                <Tags/>
+                <LaunchConfigurationName>ec-deploy-test</LaunchConfigurationName>
+                <AutoScalingGroupName>ecs-deploy-test</AutoScalingGroupName>
+                <HealthCheckGracePeriod>0</HealthCheckGracePeriod>
+                <NewInstancesProtectedFromScaleIn>false</NewInstancesProtectedFromScaleIn>
+                <CreatedTime>2017-07-02T14:29:16.445Z</CreatedTime>
+                <MinSize>1</MinSize>
+                <SuspendedProcesses/>
+                <DesiredCapacity>1</DesiredCapacity>
+                <VPCZoneIdentifier>subnet-8216b0e5</VPCZoneIdentifier>
+              </member>
+            </AutoScalingGroups>
+          </DescribeAutoScalingGroupsResult>
+          <ResponseMetadata>
+            <RequestId>ef10d29a-5f32-11e7-9230-394348f413be</RequestId>
+          </ResponseMetadata>
+        </DescribeAutoScalingGroupsResponse>
+    http_version: 
+  recorded_at: Sun, 02 Jul 2017 14:30:02 GMT
+recorded_with: VCR 3.0.3

@@ -13,6 +13,9 @@
 # it.
 #
 
+require 'bundler/setup'
+Bundler.require(:default, :test)
+
 require_relative '../main'
 Dir['spec/support/**/*.rb'].each { |f| load f }
 
@@ -32,7 +35,7 @@ RSpec.configure do |config|
   end
 
   config.include(Shoulda::Matchers::ActiveModel, type: :model)
-  
+
   # rspec-mocks config goes here. You can use an alternate test double
   # library (such as bogus or mocha) by changing the `mock_with` option here.
   config.mock_with :rspec do |mocks|
@@ -97,5 +100,6 @@ RSpec.configure do |config|
   # Setting this allows you to use `--seed` to deterministically reproduce
   # test failures related to randomization by passing the same `--seed` value
   # as the one that triggered the failure.
+
   Kernel.srand config.seed
 end

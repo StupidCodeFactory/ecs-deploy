@@ -3,22 +3,27 @@ require 'byebug'
 
 RSpec.describe ECSDeploy, vcr: { cassette_name: 'cluster_steps', record: :new_episodes}  do
 
-  let(:ecs_client) { Aws::ECS::Client.new(region: 'eu-west-1') }
-  let(:cluster_name) { 'ecs-deploy-wercker-step' }
-  let(:ec2) { Aws::EC2::Client.new(region: 'eu-west-1') }
-  let(:resource) { Aws::EC2::Resource.new(client: ec2) }
-  let(:options) do
-    double('CliOptions',
-           cluster_name: cluster_name,
-           task_definitions: ['spec/fixtures/test-definition-test.yml'],
-           services: ['spec/fixtures/services-test.yml'],
-           container_instance_file: 'spec/fixtures/container-instance-test.yml',
-           autoscaling_group_file: 'spec/fixtures/autoscaling-group-test.yml',
-           launch_configuration_file: 'spec/fixtures/launch-configuration-test.yml'
-          ) 
+  let(:ecs_client)   { Aws::ECS::Client.new(region: 'eu-west-1') }
+  let(:cluster_name) { Faker::Hipster.words(2,true, false).join('_') }
+  let(:ec2)          { Aws::EC2::Client.new(region: 'eu-west-1') }
+  let(:resource)     { Aws::EC2::Resource.new(client: ec2) }
+  let(:config)   do
+    ArgsParser.new.parse(
+      [
+        '-c', cluster_name,
+        '-a', 'spec/fixtures/autoscaling-group-test.yml',
+        '-d', 'spec/fixtures/task-definition-test.yml',
+        '-l', 'spec/fixtures/launch-configuration-test.yml',
+        '-s', 'spec/fixtures/services-test.yml'
+      ]
+    )
   end
 
-  subject { described_class.new(options) }
+  subject { described_class.new(config) }
+
+  before do
+    ap config
+  end
 
   after do
     subject.delete_cluster
@@ -33,7 +38,8 @@ RSpec.describe ECSDeploy, vcr: { cassette_name: 'cluster_steps', record: :new_ep
   describe '#deploy' do
     it 'register the task definition' do
       subject.create_cluster
-
+      subject.create_launch_configuration
+      subject.create_auto_scaling_group
       subject.register_task_definitions
       subject.create_services
     end

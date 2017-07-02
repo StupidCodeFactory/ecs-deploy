@@ -1,6 +1,12 @@
 ---
 launch_configuration_name: ec-deploy-test
-instance_type: 't2.micro'
-image_id: "ami-809f84e6"
+instance_type: t2.micro
+image_id: ami-809f84e6
+iam_instance_profile: ecsInstanceRole
+user_data: |
+  #!/bin/bash
+  echo ECS_CLUSTER=ecs-deploy-wercker-step >> /etc/ecs/ecs.config
+  
+key_name:  uprising-software-com
 security_groups:
   - sg-1364a06b
