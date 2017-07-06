@@ -2,6 +2,11 @@ name: ecs-deploy
 version: 0.1.14
 description: Deploy a project to AWS ECS
 keywords:
+  - cluster-name
+  - autoscaling-group-file
+  - launch-configuration-file
+  - task-definition-file
+  - services-file
 properties:
   cluster-name:
     required: true
