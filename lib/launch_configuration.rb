@@ -27,7 +27,6 @@ class LaunchConfiguration
 
   def create_launch_configuration
     STDOUT.puts 'Creating %s launch configuration' % name
-    config[]
     client.create_launch_configuration(config)
   end
 
