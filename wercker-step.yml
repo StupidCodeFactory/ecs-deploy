@@ -1,5 +1,5 @@
 name: ecs-deploy
-version: 0.2.3
+version: 0.2.4
 description: Deploy a project to AWS ECS
 keywords:
   - cluster-name

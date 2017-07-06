@@ -3,6 +3,7 @@
 $:.unshift(File.join(File.expand_path(File.dirname(__FILE__)), 'lib'))
 
 require 'bundler/setup'
+require 'active_support/core_ext/hash/indifferent_access'
 require 'aws-sdk'
 require 'pp'
 require 'yaml'

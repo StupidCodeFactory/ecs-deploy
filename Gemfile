@@ -2,9 +2,6 @@ source :rubygems
 
 gem 'aws-sdk'
 gem 'activesupport'
-gem 'activemodel', require: [
-      'active_support/core_ext/hash/indifferent_access'
-    ]
 
 group :test do
   gem 'shoulda-matchers'
