@@ -2,13 +2,19 @@ name: ecs-deploy
 version: 0.1.13
 description: Deploy a project to AWS ECS
 keywords:
-  - aws
-  - ecs
-  - deploy
-  - ecr
-  - docker
 properties:
-  cluster_name:
+  cluster-name:
     required: true
     type: string
-
+  autoscaling-group-file:
+    required: true
+    type: string
+  launch-configuration-file:
+    required: true
+    type: string
+  task-definition-file:
+    required: true
+    type: string
+  services-file:
+    required: true
+    type: string

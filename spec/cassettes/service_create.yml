@@ -1,0 +1,156 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ecs.eu-west-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/x-amz-json-1.1
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.1 ruby/2.4.1 x86_64-darwin16
+      X-Amz-Target:
+      - AmazonEC2ContainerServiceV20141113.ListServices
+      X-Amz-Date:
+      - 20170702T145912Z
+      Host:
+      - ecs.eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - 44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIITSQKF65OBAYC7A/20170702/eu-west-1/ecs/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
+        Signature=c7528778d6c701bab45791e3170e31bbcf46b4e87c4caabccd5935f993e432ff
+      Content-Length:
+      - '2'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Server
+      Date:
+      - Sun, 02 Jul 2017 14:59:12 GMT
+      Content-Type:
+      - application/x-amz-json-1.1
+      Content-Length:
+      - '18'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - 022616d4-5f37-11e7-8867-ebc6f5c96700
+    body:
+      encoding: UTF-8
+      string: '{"serviceArns":[]}'
+    http_version:
+  recorded_at: Sun, 02 Jul 2017 14:59:12 GMT
+- request:
+    method: post
+    uri: https://ecs.eu-west-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: '{"serviceName":"new_service","taskDefinition":"uprising-software-com","desiredCount":1,"cluster":"cluster_for_service_spec"}'
+    headers:
+      Content-Type:
+      - application/x-amz-json-1.1
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.1 ruby/2.4.1 x86_64-darwin16
+      X-Amz-Target:
+      - AmazonEC2ContainerServiceV20141113.CreateService
+      X-Amz-Date:
+      - 20170702T150601Z
+      Host:
+      - ecs.eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - 98d01e5e8948525900cbd7fc05591e72d8dd6ae0865a2a0cc20170c369e7e210
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIITSQKF65OBAYC7A/20170702/eu-west-1/ecs/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
+        Signature=cbb50d3b512e7f1f9b1175c68e025d5fe83b15b1d77e2eacbcad28c143a04e95
+      Content-Length:
+      - '124'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Server
+      Date:
+      - Sun, 02 Jul 2017 15:06:01 GMT
+      Content-Type:
+      - application/x-amz-json-1.1
+      Content-Length:
+      - '822'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - f63aad91-5f37-11e7-b055-c1ec9af8b0f5
+    body:
+      encoding: UTF-8
+      string: '{"service":{"clusterArn":"arn:aws:ecs:eu-west-1:466565482925:cluster/cluster_for_service_spec","createdAt":1.499007961799E9,"deploymentConfiguration":{"maximumPercent":200,"minimumHealthyPercent":100},"deployments":[{"createdAt":1.499007961799E9,"desiredCount":1,"id":"ecs-svc/9223370537846813942","pendingCount":0,"runningCount":0,"status":"PRIMARY","taskDefinition":"arn:aws:ecs:eu-west-1:466565482925:task-definition/uprising-software-com:124","updatedAt":1.499007961799E9}],"desiredCount":1,"events":[],"loadBalancers":[],"pendingCount":0,"placementConstraints":[],"placementStrategy":[],"runningCount":0,"serviceArn":"arn:aws:ecs:eu-west-1:466565482925:service/new_service","serviceName":"new_service","status":"ACTIVE","taskDefinition":"arn:aws:ecs:eu-west-1:466565482925:task-definition/uprising-software-com:124"}}'
+    http_version:
+  recorded_at: Sun, 02 Jul 2017 15:06:01 GMT
+- request:
+    method: post
+    uri: https://ecs.eu-west-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: '{"services":["new_service"]}'
+    headers:
+      Content-Type:
+      - application/x-amz-json-1.1
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.1 ruby/2.4.1 x86_64-darwin16
+      X-Amz-Target:
+      - AmazonEC2ContainerServiceV20141113.DescribeServices
+      X-Amz-Date:
+      - 20170702T150601Z
+      Host:
+      - ecs.eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - af76fc8f8857f4f218076c27ecff379160aff2324d41be41ab13a1655b0a422f
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIITSQKF65OBAYC7A/20170702/eu-west-1/ecs/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target,
+        Signature=9e32095283ff0b12dac48fc0771aa4a6070942bf0d2591ab9e4c32b2db53232a
+      Content-Length:
+      - '28'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Server
+      Date:
+      - Sun, 02 Jul 2017 15:06:02 GMT
+      Content-Type:
+      - application/x-amz-json-1.1
+      Content-Length:
+      - '112'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - f6703cf1-5f37-11e7-bb27-f56ede7c7a0b
+    body:
+      encoding: UTF-8
+      string: '{"failures":[{"arn":"arn:aws:ecs:eu-west-1:466565482925:service/new_service","reason":"MISSING"}],"services":[]}'
+    http_version:
+  recorded_at: Sun, 02 Jul 2017 15:06:02 GMT
+recorded_with: VCR 3.0.3

@@ -9,12 +9,11 @@ class ArgsParser
     attr_accessor :cluster_name,
                   :autoscaling_group,
                   :services,
-                  :task_definitions,
+                  :task_definition,
                   :launch_configuration
 
     def initialize
       self.services = []
-      self.task_definitions = []
     end
 
     def define_options(parser)
@@ -27,14 +26,6 @@ class ArgsParser
         self.cluster_name = cluster_name
       end
 
-      parser.on('-sSERVICES_FILE', '--services=SERVICES_FILE', 'Path to yaml file containing valid service definition')  do |services_file|
-        self.services = load_from_file(services_file)
-      end
-
-      parser.on('-dTASK_DEFINITIONS_FILE', '--task-definitions=TASK_DEFINITIONS_FILE', 'Path to yaml file containing valid task definitions')  do |task_definitions_file|
-        self.task_definitions = load_from_file(task_definitions_file)
-      end
-
       parser.on('-aAUTOSCALING_GROUP_FILE', '--autoscaling-group-file', 'Path to yaml file containing a valid autoscaling group definition') do |autoscaling_group_file|
         self.autoscaling_group = load_from_file(autoscaling_group_file)
       end
@@ -42,6 +33,15 @@ class ArgsParser
       parser.on('-lLAUNCH_CONFIGURATION_FILE', '--launch-configuration-file', 'Path to yaml file containing a valid launch configuration definition') do |launch_configuration_file|
         self.launch_configuration = load_from_file(launch_configuration_file)
       end
+
+      parser.on('-tTASK_DEFINITION_FILE', '--task-definitions=TASK_DEFINITION_FILE', 'Path to yaml file containing valid task definition')  do |task_definition_file|
+        self.task_definition = load_from_file(task_definition_file)
+      end
+
+      parser.on('-sSERVICES_FILE', '--services=SERVICES_FILE', 'Path to yaml file containing valid service definition')  do |services_file|
+        self.services = load_from_file(services_file)
+      end
+
       parser.separator ""
       parser.separator "Global option"
 

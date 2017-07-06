@@ -4,8 +4,8 @@ RSpec.describe Service do
   let(:region) { 'eu-west-1' }
   let(:client) { Aws::ECS::Client.new(region: region) }
   let(:config) { YAML.load_file('spec/fixtures/services-test.yml').first.with_indifferent_access  }
-
-  subject { described_class.new(client, config) }
+  let(:cluster) { @deploy.cluster }
+  subject { described_class.new(client, config, cluster) }
 
   before(:all) do
     @config = ArgsParser.new.parse(
@@ -17,38 +17,51 @@ RSpec.describe Service do
       ]
     )
 
+    @config.cluster_name = Faker::Hipster.words(2, true, false).join('_')
     @deploy = ECSDeploy.new(@config)
-    VCR.use_cassette :setup_cluster_for_service_spec do
-      @deploy.create_cluster
-      @deploy.create_launch_configuration
-      @deploy.create_auto_scaling_group
-    end
+    @deploy.create_cluster
+    @deploy.launch_configuration.create
+    @deploy.create_auto_scaling_group
+    @deploy.register_task_definitions
   end
 
-  after(:all, vcr: { cassette_name: :setup_cluster_for_service_spec, record: :new_episodes }) do
+  after(:all) do
     @deploy.delete
   end
 
-  describe '#create' do
-    context 'when not created' do
-
-      before do
-        expect(subject).to receive(:exists?).and_return(false)
-      end
-
-      it 'is created' do
-        expect(client).to receive(:create_service).with(config)
-        subject.create
-      end
+  describe 'with an existant service' do
+    before do
+      config[:service_name] = Faker::Hipster.words(2, true, false).join('_')
+      subject.create
     end
 
-    context 'when not created' do
-      before do
+    describe 'craete or update' do
+      after { subject.delete }
+
+      it 'is not created' do
         subject.create
       end
 
-      it 'is not created', vcr: { cassette_name: 'service_already_created', record: :once} do
-        expect(client).to_not receive(:create_service)
+      describe '#update' do
+
+        it 'update the current service' do
+          expect(subject.update(desired_count: 0).desired_count).to eq(0)
+        end
+      end
+    end
+    describe '#delete' do
+      it 'is deleted' do
+        subject.create
+        expect(subject.delete.status).to eq('INACTIVE')
+      end
+    end
+  end
+
+  describe '#create' do
+
+    context 'when not created' do
+      after { subject.delete }
+      it 'is created' do
         subject.create
       end
     end

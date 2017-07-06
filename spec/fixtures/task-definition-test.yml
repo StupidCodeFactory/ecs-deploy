@@ -1,82 +1,100 @@
----
-- family: 'uprising-software-com'
-  task_role_arn:
-  network_mode:
-  container_definitions:
-    - name: nginx
-      image: nginx:alpine
-      cpu:
-      memory: 512
-      memoryReservation:
-      links:
-      port_mappings:
-        - container_port: 80
-          host_port: 80
-          protocol: tcp
-        - container_port: 443
-          host_port: 443
-          protocol: tcp
-      essential: true
-      entry_point:
-      # command:
-      # environment:
-      #   - name:
-      #     value:
-      mount_points:
-        - source_volume: certbot-etc
-          container_path: /etc/letsencrypt
-          read_only: true
-        - source_volume: certbot-var
-          container_path: /var/letsencrypt
-          read_only: true
-        - source_volume: certbot-www
-          container_path: /usr/local/nginx/html
-          read_only: true
-      # volumes_from:
-      #   - source_container:
-      #     read_only:
-      hostname:
-      user:
-      working_directory:
-      disable_networking:
-      privileged:
-      readonly_root_filesystem:
-      dns_dervers:
-      dns_search_domains:
-      # extra_hosts:
-      #   - hostname:
-      #     ipAddress:
-      docker_security_options:
-      # docker_labels:
-      #     key_name: key_value
-      # ulimits:
-      #   - name:
-      #     soft_limit:
-      #     hard_limit:
-      # log_configuration:
-      #     log_driver:
-      #     options:
-      #       key_name: ''
-    - name: certbot
-      image: certbot/certbot
-      memory: 127
-      links:
-      essential: true
-      command:
-      volumes_from:
-        - source_container: nginx
-          read_only: false
-
-  # placement_constraints:
-  #   - expression:
-  #     type:
-  volumes:
-    - name: certbot-etc
-      host:
-        sourcePath: /etc/letsencrypt
-    - name: certbot-var
-      host:
-        sourcePath: /var/letsencrypt
-    - name: certbot-www
-      host:
-        sourcePath: /usr/local/nginx/html
+family: 'uprising-software-com'
+task_role_arn:
+network_mode:
+container_definitions:
+  - name: nginx
+    image: nginx:alpine
+    cpu:
+    memory: 512
+    memoryReservation:
+    links:
+    port_mappings:
+      - container_port: 80
+        host_port: 80
+        protocol: tcp
+      - container_port: 443
+        host_port: 443
+        protocol: tcp
+    essential: true
+    entry_point:
+    command:
+      - nginx
+      - -g
+      - daemon off;
+    # environment:
+    #   - name:
+    #     value:
+    mount_points:
+      - source_volume: certbot-etc
+        container_path: /etc/letsencrypt
+        read_only: true
+      - source_volume: certbot-var
+        container_path: /var/letsencrypt
+        read_only: true
+      - source_volume: certbot-www
+        container_path: /usr/local/nginx/html
+        read_only: true
+    hostname:
+    user:
+    working_directory:
+    disable_networking:
+    privileged:
+    readonly_root_filesystem:
+    dns_dervers:
+    dns_search_domains:
+    # extra_hosts:
+    #   - hostname:
+    #     ipAddress:
+    docker_security_options:
+    # docker_labels:
+    #     key_name: key_value
+    # ulimits:
+    #   - name:
+    #     soft_limit:
+    #     hard_limit:
+    # log_configuration:
+    #     log_driver:
+    #     options:
+    #       key_name: ''
+    # placement_constraints:
+    #   - expression:
+    #     type:
+  - name: certbot
+    image: certbot/certbot
+    memory: 127
+    links:
+    essential: false
+    command:
+      - certbot
+      - certonly
+      - --webroot
+      - -w
+      - /usr/share/nginx/html
+      - -d
+      - uprising-software.com
+      - -d
+      - www.uprising-software.com
+      - --agree-tos
+      - -m
+      - ymarquet@gmail.com
+      - --test-cert
+    mount_points:
+      - source_volume: certbot-etc
+        container_path: /etc/letsencrypt
+        read_only: true
+      - source_volume: certbot-var
+        container_path: /var/letsencrypt
+        read_only: true
+      - source_volume: certbot-www
+        container_path: /usr/local/nginx/html
+        read_only: true
+volumes:
+  - name: certbot-etc
+    host:
+      source_path: /etc/letsencrypt
+  - name: certbot-var
+    host:
+      source_path: /var/letsencrypt
+  - name: certbot-www
+    host:
+      source_path: /usr/local/nginx/html

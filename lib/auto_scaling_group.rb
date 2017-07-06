@@ -19,6 +19,10 @@ class AutoScalingGroup
     @auto_scaling_group ||= autoscaling_group || create_auto_scaling_group
   end
 
+  def update
+
+  end
+
   def delete
     return unless autoscaling_group
     client.delete_auto_scaling_group(auto_scaling_group_name: name, force_delete: true)

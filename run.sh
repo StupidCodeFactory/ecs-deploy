@@ -29,6 +29,7 @@ if [ $? -ne 0 ]; then
 fi
 
 INSTALL_DEPENDENCIES=$(bundle install --gemfile=$WERCKER_STEP_ROOT/Gemfile 2>&1)
+
 if [ $? -ne 0 ]; then
     error "Unable to install dependencies"
     warn "$INSTALL_DEPENDENCIES"
@@ -40,9 +41,29 @@ if [ -z "${WERCKER_ECS_DEPLOY_CLUSTER_NAME}" ]; then
     exit 1
 fi
 
-if [ -z "${WERCKER_ECS_DEPLOY_SERVICE_NAME}" ]; then
-    error "Please set the 'service_name' key under the stupidcodefactory/ecs-deploy step definition."
+if [ -z "${WERCKER_ECS_DEPLOY_AUTOSCALING_GROUP_FILE}" ]; then
+    error "Please set the 'autoscaling-group-file' key under the stupidcodefactory/ecs-deploy step definition."
     exit 1
 fi
 
-ruby $WERCKER_STEP_ROOT/main.rb --cluster-name $WERCKER_ECS_DEPLOY_CLUSTER_NAME --service-name $WERCKER_ECS_DEPLOY_SERVICE_NAME
+if [ -z "${WERCKER_ECS_DEPLOY_LAUNCH_CONFIGURATION_FILE}" ]; then
+    error "Please set the 'launch-configuration-file' key under the stupidcodefactory/ecs-deploy step definition."
+    exit 1
+fi
+
+if [ -z "${WERCKER_ECS_DEPLOY_TASK_DEFINITION_FILE}" ]; then
+    error "Please set the 'task-definition-file' key under the stupidcodefactory/ecs-deploy step definition."
+    exit 1
+fi
+
+if [ -z "${WERCKER_ECS_DEPLOY_SERVICES_FILE}" ]; then
+    error "Please set the 'services-file' key under the stupidcodefactory/ecs-deploy step definition."
+    exit 1
+fi
+
+ruby $WERCKER_STEP_ROOT/main.rb \
+     -c $WERCKER_ECS_DEPLOY_CLUSTER_NAME \
+     -a $WERCKER_ECS_DEPLOY_AUTOSCALING_GROUP_FILE \
+     -l $WERCKER_ECS_DEPLOY_LAUNCH_CONFIGURATION_FILE \
+     -t $WERCKER_ECS_DEPLOY_TASK_DEFINITION_FILE \
+     -s $WERCKER_ECS_DEPLOY_SERVICES_FILE

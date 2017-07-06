@@ -7,4 +7,3 @@ launch_configuration_name: ec-deploy-test
 vpc_zone_identifier: subnet-8216b0e5
 availability_zones:
   - 'eu-west-1a'
-

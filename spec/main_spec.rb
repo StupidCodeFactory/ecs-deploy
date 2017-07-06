@@ -22,7 +22,8 @@ RSpec.describe ECSDeploy, vcr: { cassette_name: 'cluster_steps', record: :new_ep
   subject { described_class.new(config) }
 
   before do
-    ap config
+    config.autoscaling_group['auto_scaling_group_name'] = [cluster_name, 'auto_scaling_group'].join('-')
+    config.launch_configuration['launch_configuration_name'] = [cluster_name, 'launch_configuration'].join('-')
   end
 
   after do
@@ -38,10 +39,10 @@ RSpec.describe ECSDeploy, vcr: { cassette_name: 'cluster_steps', record: :new_ep
   describe '#deploy' do
     it 'register the task definition' do
       subject.create_cluster
-      subject.create_launch_configuration
+      subject.launch_configuration.create
       subject.create_auto_scaling_group
       subject.register_task_definitions
-      subject.create_services
+      subject.launch_services
     end
   end
 end

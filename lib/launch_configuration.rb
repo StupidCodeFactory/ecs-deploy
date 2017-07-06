@@ -1,8 +1,11 @@
 require 'base64'
+require 'erb'
+
 class LaunchConfiguration
-  def initialize(client, config)
-    self.client = client
-    self.config = config.with_indifferent_access
+  def initialize(client, config, cluster)
+    self.client  = client
+    self.config  = config.with_indifferent_access
+    self.cluster = cluster
   end
 
   def exists?
@@ -11,8 +14,8 @@ class LaunchConfiguration
 
   def create
     ensure_user_data_base64_encoded
-
-    @launch_configuration ||= launch_configuration || client.create_launch_configuration(config)
+    byebug
+    @launch_configuration ||= launch_configuration || create_launch_configuration
   end
 
   def delete
@@ -21,16 +24,31 @@ class LaunchConfiguration
   end
 
   private
-  attr_accessor :config, :client
+  attr_accessor :config, :client, :cluster
+
+  def create_launch_configuration
+    STDOUT.puts 'Creating %s launch configuration' % name
+    client.create_launch_configuration(config)
+  end
+
 
   def launch_configuration
-    @launch_configuration ||= client.describe_launch_configurations(
-      launch_configuration_names: [name]
-    ).launch_configurations.first
+
+    @launch_configuration ||= begin
+                                client.describe_launch_configurations(
+                                  launch_configuration_names: [name]
+                                ).launch_configurations.first
+                              end
   end
 
   def ensure_user_data_base64_encoded
-    config[:user_data] = Base64.encode64(config[:user_data]) if config.key? :user_data
+    if config.key? :user_data
+      config[:user_data] = Base64.encode64(ERB.new(config[:user_data]).result(binding))
+    end
+  end
+
+  def cluster_name
+    cluster.name
   end
 
   def name

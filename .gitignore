@@ -1,3 +1,4 @@
 .wercker/
 .rspec
 .byebug_history
+spec/examples.txt

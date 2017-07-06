@@ -4,9 +4,9 @@ require 'launch_configuration'
 RSpec.describe LaunchConfiguration do
   let(:region) { 'eu-west-1' }
   let(:client) { Aws::AutoScaling::Client.new(region: region) }
-  let(:config) { YAML.load_file('spec/fixtures/launch-configuration-test.yml').with_indifferent_access }
-
-  subject { described_class.new(client, config) }
+  let!(:config) { YAML.load_file('spec/fixtures/launch-configuration-test.yml').with_indifferent_access }
+  let(:cluster_name) { 'cluster-name' }
+  subject { described_class.new(client, config, Cluster.new(client, cluster_name)) }
 
   after do
     begin
@@ -31,8 +31,13 @@ RSpec.describe LaunchConfiguration do
   describe '#create' do
     context 'when not yet created' do
       it 'creates the launch configuration' do
+        subject
+        expect(Base64).to receive(:encode64).with("#!/bin/bash\necho ECS_CLUSTER=cluster-name >> /etc/ecs/ecs.config\n").
+                            and_return("IyEvYmluL2Jhc2gKZWNobyBFQ1NfQ0xVU1RFUj1jbHVzdGVyLW5hbWUgPj4g\nL2V0Yy9lY3MvZWNzLmNvbmZpZwo=\n")
+        config[:user_data] = "IyEvYmluL2Jhc2gKZWNobyBFQ1NfQ0xVU1RFUj1jbHVzdGVyLW5hbWUgPj4g\nL2V0Yy9lY3MvZWNzLmNvbmZpZwo=\n"
         expect(client).to receive(:create_launch_configuration).with(config)
         subject.create
+
       end
     end
 
