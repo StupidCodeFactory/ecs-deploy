@@ -6,7 +6,6 @@ class LaunchConfiguration
     self.client  = client
     self.config  = config.with_indifferent_access
     self.cluster = cluster
-    config[:launch_configuration_name] ||= "#{cluster_name}-launch-configuration"
   end
 
   def exists?

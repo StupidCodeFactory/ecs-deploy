@@ -32,8 +32,8 @@ class ECSDeploy
 
   def deploy
     create_cluster
-    create_auto_scaling_group
     create_launch_configuration
+    create_auto_scaling_group
     register_task_definitions
     launch_services
   end
@@ -53,6 +53,10 @@ class ECSDeploy
   attr_writer :cluster, :autoscaling_group, :launch_configuration
   attr_accessor :services,
                 :task_definition
+
+  def create_launch_configuration
+    launch_configuration.create
+  end
 
   def create_cluster
     cluster.create
