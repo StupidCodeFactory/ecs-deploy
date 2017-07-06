@@ -62,7 +62,6 @@ class ArgsParser
   end
 
   def parse(args)
-    ap args
     @options = ScriptOptions.new
     @args = OptionParser.new do |parser|
       @options.define_options(parser)
