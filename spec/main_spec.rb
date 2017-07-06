@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'byebug'
 
 RSpec.describe ECSDeploy, vcr: { cassette_name: 'cluster_steps', record: :new_episodes}  do
 

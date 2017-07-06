@@ -14,7 +14,6 @@ class LaunchConfiguration
 
   def create
     ensure_user_data_base64_encoded
-    byebug
     @launch_configuration ||= launch_configuration || create_launch_configuration
   end
 

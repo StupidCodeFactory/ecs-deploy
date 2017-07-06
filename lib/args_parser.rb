@@ -1,8 +1,4 @@
 require 'optparse'
-begin
-  require 'byebug'
-rescue LoadError
-end
 
 class ArgsParser
   class ScriptOptions
