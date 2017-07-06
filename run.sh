@@ -22,6 +22,8 @@ if ! type_exists 'ruby'; then
     error "Please install ruby or use a docker ruby image"
 fi
 
+pwd
+
 INSTALL_BUNDLER=$(gem install bundler --no-doc 2>&1)
 if [ $? -ne 0 ]; then
     error "Unable to install bundler"
