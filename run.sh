@@ -64,7 +64,7 @@ if [ -z "${WERCKER_ECS_DEPLOY_SERVICES_FILE}" ]; then
     exit 1
 fi
 
-bundle exec $WERCKER_STEP_ROOT/Gemfile --gemfile= ruby $WERCKER_STEP_ROOT/main.rb \
+bundle exec  --gemfile=$WERCKER_STEP_ROOT/Gemfile ruby $WERCKER_STEP_ROOT/main.rb \
        -c $WERCKER_ROOT/$$WERCKER_ECS_DEPLOY_CLUSTER_NAME \
        -a $WERCKER_ROOT/$WERCKER_ECS_DEPLOY_AUTOSCALING_GROUP_FILE \
        -l $WERCKER_ROOT/$WERCKER_ECS_DEPLOY_LAUNCH_CONFIGURATION_FILE \
