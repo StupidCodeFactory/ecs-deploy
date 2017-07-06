@@ -28,7 +28,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-INSTALL_DEPENDENCIES=$(bundle install --gemfile=$WERCKER_STEP_ROOT/Gemfile 2>&1)
+INSTALL_DEPENDENCIES=$(bundle install --without test --gemfile=$WERCKER_STEP_ROOT/Gemfile 2>&1)
 
 if [ $? -ne 0 ]; then
     error "Unable to install dependencies"
